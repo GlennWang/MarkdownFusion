@@ -3,4 +3,10 @@
 # Virtual Environment
 venv/
 
+# Ignore markdown-post folder
+markdown-post/
+
+# Ignore output-post folder
+output-post/
+
 # ...其他可能需要忽略的文件和目錄
