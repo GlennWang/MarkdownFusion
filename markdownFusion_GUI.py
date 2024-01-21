@@ -30,13 +30,16 @@ def convert_to_html(md_content):
         print(f"Markdown轉換為HTML時發生錯誤：{response.status_code}")
         return None
 
-def save_html_file(html_content, output_path, template_path):
+def save_html_file(html_content, output_path, template_path, md_file_name):
     """存儲HTML檔案，將HTML內容插入到template的<article>標籤中"""
     with open(template_path, 'r', encoding='utf-8') as template_file:
         template_content = template_file.read()
 
     # 插入HTML內容到<article>標籤中
     final_html_content = template_content.replace('<article class="markdown-body"></article>', f'<article class="markdown-body">\n{html_content}\n</article>')
+
+    # 插入<title>標籤
+    final_html_content = final_html_content.replace('<title></title>', f'<title>{md_file_name}</title>')
 
     with open(output_path, 'w', encoding='utf-8') as file:
         file.write(final_html_content)
@@ -58,13 +61,16 @@ def convert_and_save():
     md_file_path = entry_md.get()
     template_path = entry_template.get()
     output_file_name = entry_output.get()
+
+    # 取得MD檔案名稱（不包含副檔名）
+    md_file_name = os.path.splitext(os.path.basename(md_file_path))[0]
     
     md_content = read_md_file(md_file_path)
     html_content = convert_to_html(md_content)
 
     if html_content:
         output_path = os.path.join('output-post', f'{output_file_name}.html')
-        save_html_file(html_content, output_path, template_path)
+        save_html_file(html_content, output_path, template_path, md_file_name)
         result_label.config(text=f"HTML檔案成功存儲於 {output_path}", fg="green")
     else:
         result_label.config(text="無法完成HTML轉換及存儲。", fg="red")
