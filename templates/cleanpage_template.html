@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <link rel="stylesheet" href="../src/Styles/GeneralStyle.css">
     <link rel="stylesheet" href="/src/Styles/CleanPageStyle.css">
     <link rel="icon" href="/src/images/favicon-48x48.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.css" integrity="sha512-LX/J+iRwkfRqaipVsfmi2B1S7xrqXNHdTb6o4tWe2Ex+//EN3ifknyLIbX5f+kC31zEKHon5l9HDEwTQR1H8cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-  <body>
+  <body data-theme="">
     <header>
-      <button class="menu">&#9776;</button>
+      <button class="menu" onclick="toggleDropdown()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
       <a href="../index.html"><h2 id="Logo">Glenn's blog</h2></a>
       <nav>
         <ul>
@@ -21,9 +26,9 @@
         </ul>
       </nav>
     </header>
-    <nav class="dropdown_menu">
+    <nav class="dropdown_menu" id="Dropdown">
       <ul>
-        <li><a href="#">預留位置</a></li>
+        <li><a href="/Categories.html">文章列表</a></li>
         <li><a href="#">預留位置</a></li>
         <li><a href="#">預留位置</a></li>
         <li><a href="#">預留位置</a></li>
@@ -39,6 +44,7 @@
     <footer>
       <p>Copyright © 2024 Glenn's blog All Rights Reserved.</p>
     </footer>
-    <script src="src/Scripts/sticky-nav.js"></script>
+    <script src="/src/Scripts/sticky-nav.js"></script>
+    <script src="/src/Scripts/toggleDropdown.js"></script>
   </body>
 </html>
